@@ -1,22 +1,20 @@
+import { Box, useColorModeValue } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+
 import CreatePage from "./pages/createPage";
+import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
-import { ThemeProvider } from "./context/ThemeContext";  // ✅ Import ThemeProvider correctly
 
 function App() {
-  return (
-    <ThemeProvider>
-      <div style={{ minHeight: "100vh" }}> {/* ✅ Replaced Box with div */}
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/create" element={<CreatePage />} />
-        </Routes>
-      </div>
-    </ThemeProvider>
-  );
+	return (
+		<Box minH={"100vh"} bg={useColorModeValue("gray.100", "gray.900")}>
+			<Navbar />
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+				<Route path='/create' element={<CreatePage />} />
+			</Routes>
+		</Box>
+	);
 }
 
 export default App;
-
